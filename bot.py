@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-API_ID = os.getenv("API_ID")
-API_HASH = os.getenv("API_HASH")
-TOKEN = os.getenv("BOT_TOKEN")
+API_ID = os.getenv("API_ID", "ac24e438ff9a0f600cf3283e6d60b1aa")
+API_HASH = os.getenv("API_HASH", "25579552")
+TOKEN = os.getenv("BOT_TOKEN", "7548242755:AAGiLXS6Qc2ZCPksD73t7yVlPKeFi4w86gM")
 
 bot = telebot.TeleBot(TOKEN)
 

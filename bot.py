@@ -10,6 +10,7 @@ API_ID = os.getenv("API_ID", "ac24e438ff9a0f600cf3283e6d60b1aa")
 API_HASH = os.getenv("API_HASH", "25579552")
 TOKEN = os.getenv("BOT_TOKEN", "7548242755:AAGiLXS6Qc2ZCPksD73t7yVlPKeFi4w86gM")
 
+
 bot = telebot.TeleBot(TOKEN)
 
 # HTML Template for better readability
@@ -32,17 +33,29 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            white-space: pre-wrap;
         }}
-        p {{
-            margin-bottom: 15px;
-            line-height: 1.6;
+        h2 {{
+            text-align: center;
+            color: #333;
+        }}
+        .download {{
+            text-align: center;
+            margin-top: 20px;
+        }}
+        .download a {{
+            text-decoration: none;
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
         }}
     </style>
 </head>
 <body>
     <div class="container">
         <h2>{title}</h2>
-        {content}
+        <pre>{content}</pre>
     </div>
 </body>
 </html>
@@ -50,7 +63,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, "📜 Send me a .txt file, and I'll convert it into a fully readable HTML page.")
+    bot.send_message(message.chat.id, "📜 Send me a .txt file, and I'll return it as a readable HTML page.")
 
 @bot.message_handler(content_types=['document'])
 def handle_docs(message):
@@ -73,11 +86,8 @@ def handle_docs(message):
     with open(txt_filename, "r", encoding="utf-8") as txt_file:
         text_content = txt_file.read()
 
-    # Convert newlines into <p> tags for better readability
-    formatted_content = "<p>" + text_content.replace("\n", "</p><p>") + "</p>"
-
-    # Create full HTML page
-    html_content = HTML_TEMPLATE.format(title=txt_filename, content=formatted_content)
+    # Preserve text formatting with <pre> tags
+    html_content = HTML_TEMPLATE.format(title=txt_filename, content=text_content)
 
     # Save as HTML file
     with open(html_filename, "w", encoding="utf-8") as html_file:
@@ -93,3 +103,4 @@ def handle_docs(message):
 
 print("Bot is running...")
 bot.polling()
+

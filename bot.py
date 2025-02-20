@@ -12,10 +12,50 @@ TOKEN = os.getenv("BOT_TOKEN", "7548242755:AAGiLXS6Qc2ZCPksD73t7yVlPKeFi4w86gM")
 
 bot = telebot.TeleBot(TOKEN)
 
+# HTML Template for better readability
+HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }}
+        .container {{
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }}
+        p {{
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>{title}</h2>
+        {content}
+    </div>
+</body>
+</html>
+"""
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "📜 Send me a .txt file, and I'll convert it into a fully readable HTML page.")
+
 @bot.message_handler(content_types=['document'])
 def handle_docs(message):
     if message.document.mime_type != "text/plain":
-        bot.reply_to(message, "Please upload a valid .txt file.")
+        bot.reply_to(message, "❌ Please upload a valid .txt file.")
         return
 
     file_id = message.document.file_id
@@ -29,11 +69,19 @@ def handle_docs(message):
     with open(txt_filename, "wb") as f:
         f.write(downloaded_file)
 
-    # Convert to .html
-    with open(txt_filename, "r", encoding="utf-8") as txt_file, open(html_filename, "w", encoding="utf-8") as html_file:
-        html_file.write("<html><body><pre>\n")
-        html_file.write(txt_file.read())
-        html_file.write("\n</pre></body></html>")
+    # Read .txt file and format as HTML
+    with open(txt_filename, "r", encoding="utf-8") as txt_file:
+        text_content = txt_file.read()
+
+    # Convert newlines into <p> tags for better readability
+    formatted_content = "<p>" + text_content.replace("\n", "</p><p>") + "</p>"
+
+    # Create full HTML page
+    html_content = HTML_TEMPLATE.format(title=txt_filename, content=formatted_content)
+
+    # Save as HTML file
+    with open(html_filename, "w", encoding="utf-8") as html_file:
+        html_file.write(html_content)
 
     # Send back the .html file
     with open(html_filename, "rb") as html_file:
@@ -42,10 +90,6 @@ def handle_docs(message):
     # Cleanup
     os.remove(txt_filename)
     os.remove(html_filename)
-
-@bot.message_handler(commands=['start'])
-def start(message):
-    bot.send_message(message.chat.id, "Send me a .txt file, and I'll convert it to .html for you.")
 
 print("Bot is running...")
 bot.polling()

@@ -1,18 +1,30 @@
 import telebot
 import os
+import re
 
 API_ID = os.getenv("API_ID", "ac24e438ff9a0f600cf3283e6d60b1aa")
 API_HASH = os.getenv("API_HASH", "25579552")
 TOKEN = os.getenv("BOT_TOKEN", "7548242755:AAGiLXS6Qc2ZCPksD73t7yVlPKeFi4w86gM")
 
-
 bot = telebot.TeleBot(TOKEN)
 
-# Function to convert TXT to HTML
+
+# Function to extract URLs from text
+def extract_links(content):
+    url_pattern = re.compile(r'https?://\S+')
+    return url_pattern.findall(content)
+
+# Function to convert TXT to HTML with extracted links
 def txt_to_html(txt_path, html_path):
     with open(txt_path, 'r', encoding='utf-8') as txt_file:
         content = txt_file.read()
     
+    # Extract links from text
+    links = extract_links(content)
+
+    # Format links as HTML rows
+    link_rows = "".join(f"<tr><td>Link {i+1}</td><td><a href='{link}' target='_blank'>Click to View</a></td></tr>" for i, link in enumerate(links))
+
     html_content = f"""
     <!doctype html>
     <html>
@@ -22,7 +34,7 @@ def txt_to_html(txt_path, html_path):
         <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
         <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5' name='viewport'>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-        <title></title>
+        <title>SSB GUIDE TEAM ARPIT</title>
         <style>
             body {{margin: 0;font-family: 'Poppins', sans-serif;}}
             table {{word-break: break-word;border-collapse: collapse;width: 100%;}}
@@ -58,12 +70,9 @@ def txt_to_html(txt_path, html_path):
         </pre>
         <h1>AIMERS ❤</h1>
         <details>
-            <summary><p>OPEN</p></summary>
+            <summary>SANKALP 1.0 & 2.0 NDA 2024<p>SSB GUIDE</p></summary>
             <table>
-                <tr>
-                    <td></td>
-                    <td><a href=' '>Click to View</a></td>
-                </tr>
+                {link_rows}
             </table>
             <h3>THANK YOU</h3>
             <h4>Contact with us in <a href='http://telegram.me/allaimers_bot'>
@@ -105,5 +114,6 @@ def handle_txt_file(message):
     os.remove(html_path)
 
 bot.polling()
+
 
 

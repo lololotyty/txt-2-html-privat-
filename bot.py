@@ -1,12 +1,8 @@
 import telebot
 import os
 
-API_ID = os.getenv("API_ID", "ac24e438ff9a0f600cf3283e6d60b1aa")
-API_HASH = os.getenv("API_HASH", "25579552")
-TOKEN = os.getenv("BOT_TOKEN", "7548242755:AAGiLXS6Qc2ZCPksD73t7yVlPKeFi4w86gM")
-
-
-bot = telebot.TeleBot(TOKEN)
+BOT_TOKEN = "YOUR_BOT_TOKEN"
+bot = telebot.TeleBot(BOT_TOKEN)
 
 # Function to convert TXT to HTML
 def txt_to_html(txt_path, html_path):
@@ -22,20 +18,20 @@ def txt_to_html(txt_path, html_path):
         <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
         <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5' name='viewport'>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-        <title>{title}</title>
+        <title></title>
         <style>
-            body {margin: 0;font-family: 'Poppins', sans-serif;}
-            table {word-break: break-word;border-collapse: collapse;width: 100%;}
-            summary {font-weight: 600;text-align: center;padding: 14px;background-color: #0f0120;color: #ffffff;font-size: 18px;list-style: none;border-radius: 50px;margin: 3px;}
-            td {font-size: 13px;padding: 13px;width: 50%;}
-            a {text-decoration: none;}
-            h1 {color: rgb(248, 123, 6);text-align: center;font-size: 25px;}
-            tr:nth-child(even) {background-color: #f2f2f2;}
-            .header {display: flex;align-items: center;padding: 10px;background-color: #f8f9fa;}
-            .header img {width: 20px;margin-right: 10px;}
-            .header a {text-decoration: none;color: #007bff;font-weight: 600;margin-right: 20px;}
-            .footer {text-align: center;margin-top: 20px;}
-            .footer-text {font-size: 15px;font-weight: bold;background: linear-gradient(to right, #f5f37a, #f1c480)}
+            body {{margin: 0;font-family: 'Poppins', sans-serif;}}
+            table {{word-break: break-word;border-collapse: collapse;width: 100%;}}
+            summary {{font-weight: 600;text-align: center;padding: 14px;background-color: #0f0120;color: #ffffff;font-size: 18px;list-style: none;border-radius: 50px;margin: 3px;}}
+            td {{font-size: 13px;padding: 13px;width: 50%;}}
+            a {{text-decoration: none;}}
+            h1 {{color: rgb(248, 123, 6);text-align: center;font-size: 25px;}}
+            tr:nth-child(even) {{background-color: #f2f2f2;}}
+            .header {{display: flex;align-items: center;padding: 10px;background-color: #f8f9fa;}}
+            .header img {{width: 20px;margin-right: 10px;}}
+            .header a {{text-decoration: none;color: #007bff;font-weight: 600;margin-right: 20px;}}
+            .footer {{text-align: center;margin-top: 20px;}}
+            .footer-text {{font-size: 15px;font-weight: bold;background: linear-gradient(to right, #f5f37a, #f1c480)}}
         </style>
     </head>
     <body>
@@ -61,8 +57,8 @@ def txt_to_html(txt_path, html_path):
             <summary><p>OPEN</p></summary>
             <table>
                 <tr>
-                    <td>Updated Sankalp Batch Time - Table</td>
-                    <td><a href='https://appxcontent-mcdn.akamai.net.in/paid_course4/2024-05-03-0.04502875872610956.pdf'>Click to View</a></td>
+                    <td></td>
+                    <td><a href=' '>Click to View</a></td>
                 </tr>
             </table>
             <h3>THANK YOU</h3>
@@ -105,4 +101,5 @@ def handle_txt_file(message):
     os.remove(html_path)
 
 bot.polling()
+
 

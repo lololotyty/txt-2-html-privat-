@@ -102,18 +102,25 @@ def txt_to_html(txt_path, html_path):
 def handle_txt_file(message):
     file_id = message.document.file_id
     file_info = bot.get_file(file_id)
+
+    # Extract the original file name
+    original_file_name = message.document.file_name
+    file_name_without_ext = os.path.splitext(original_file_name)[0]  # Remove .txt extension
+
+    txt_path = f"{file_name_without_ext}.txt"
+    html_path = f"{file_name_without_ext}.html"  # Ensure it's a valid string
+
     downloaded_file = bot.download_file(file_info.file_path)
-    txt_path = "input.txt"
-    html_path = {'file_name' + '.html'}
-    
+
     with open(txt_path, 'wb') as new_file:
         new_file.write(downloaded_file)
-    
+
+    # Call the conversion function with correct string paths
     txt_to_html(txt_path, html_path)
-    
+
     with open(html_path, 'rb') as html_file:
         bot.send_document(message.chat.id, html_file)
-    
+
     os.remove(txt_path)
     os.remove(html_path)
 

@@ -98,6 +98,12 @@ def txt_to_html(txt_path, html_path):
         html_file.write(html_content)
 
 # Telegram bot handler
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.send_photo(message.chat.id, 'https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg',
+                   caption='Welcome to the TXT to HTML Converter Bot!\nSend a .txt file, and I will convert it into an HTML file with clickable links.')
+
+# Telegram bot handler
 @bot.message_handler(content_types=['document'])
 def handle_txt_file(message):
     file_id = message.document.file_id

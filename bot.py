@@ -104,7 +104,7 @@ def handle_txt_file(message):
     file_info = bot.get_file(file_id)
     downloaded_file = bot.download_file(file_info.file_path)
     txt_path = "input.txt"
-    html_path = "output.html"
+    html_path = {'file_name' + '.html'}
     
     with open(txt_path, 'wb') as new_file:
         new_file.write(downloaded_file)

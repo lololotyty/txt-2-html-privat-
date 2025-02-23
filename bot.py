@@ -23,9 +23,10 @@ def txt_to_html(txt_path, html_path):
     links = extract_links(content)
 
     # Format links as HTML rows
-    link_rows = "".join(
-        f"<tr><td>{name}</td><td><a href='{url}' target='_blank'>Click to View</a></td></tr>"
-    )
+    link_rows = "".join([
+        f"<tr><td>{name}</td><td><a href='{url}' target='_blank'>Click to View</a></td></tr>" 
+        for name, url in links
+    ])
     
     html_content = f"""
     <!doctype html>

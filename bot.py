@@ -11,8 +11,8 @@ bot = telebot.TeleBot(TOKEN)
 
 # Function to extract URLs from text
 def extract_links(content):
-    url_pattern = re.compile(r'https?://\S+')
-    return url_pattern.findall(content)
+    pattern = re.compile(r'(.+?):(https?://\S+)')
+    return pattern.findall(content)
 
 # Function to convert TXT to HTML with extracted links
 def txt_to_html(txt_path, html_path):

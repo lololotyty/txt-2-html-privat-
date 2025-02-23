@@ -16,6 +16,7 @@ def extract_links(content):
 
 # Function to convert TXT to HTML with extracted links
 def txt_to_html(txt_path, html_path):
+    file_name = os.path.basename(txt_path).replace('.txt', '')
     with open(txt_path, 'r', encoding='utf-8') as txt_file:
         content = txt_file.read()
     

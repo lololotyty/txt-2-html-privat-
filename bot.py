@@ -23,8 +23,10 @@ def txt_to_html(txt_path, html_path):
     links = extract_links(content)
 
     # Format links as HTML rows
-    link_rows = "".join(f"<tr><td>Link {i+1}</td><td><a href='{link}' target='_blank'>Click to View</a></td></tr>" for i, link in enumerate(links))
-
+    link_rows = "".join(
+        f"<tr><td>{name}</td><td><a href='{url}' target='_blank'>Click to View</a></td></tr>" for name, url in links
+    )
+    
     html_content = f"""
     <!doctype html>
     <html>
@@ -34,7 +36,7 @@ def txt_to_html(txt_path, html_path):
         <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
         <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5' name='viewport'>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-        <title>SSB GUIDE TEAM ARPIT</title>
+        <title>{file_name}</title>
         <style>
             body {{margin: 0;font-family: 'Poppins', sans-serif;}}
             table {{word-break: break-word;border-collapse: collapse;width: 100%;}}
@@ -52,38 +54,38 @@ def txt_to_html(txt_path, html_path):
     </head>
     <body>
         <div class='header'>
-            <a href='https://t.me/+2cOj_hKs64o0NDRl' target='_blank'>
+            <a href='https://t.me/AJ_STYLE_EDITS' target='_blank'>
                 <img src='https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg' alt='Telegram Channel'>
                 Telegram Channel
             </a>
-            <a href='https://telegram.me/I_AJPYTHON' target='_blank'>
+            <a href='https://telegram.me/AJ_TECH_WORLD' target='_blank'>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg' alt='Telegram Main Channel'>
+                Telegram Main
+            </a>
+            <a href='https://t.me/AJ_PYTHON_15' target='_blank'>
                 <img src='https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg' alt='Telegram Username'>
                 Telegram Username
             </a>
-            <a href='https://whatsapp.com/channel/0029Vac9SnM6BIElqk2pMm2q' target='_blank'>
-                <img src='https://graph.org/file/da84b2d7c1a5c958163b6.jpg' height='20'/>
-                Whatsapp Channel
-            </a>
         </div>
         <pre>
-            <img src='https://graph.org/file/45f9bf5a52c6d7309253f.jpg' height='150'/>
+            <img src='https://envs.sh/tdy.jpg' height='150'/>
         </pre>
-        <h1>AIMERS ❤</h1>
+        <h1>ΛJ 𝐓𝐄𝐂𝐇 𝐖𝐎𝐑𝐋𝐃</h1>
         <details>
-            <summary>SANKALP 1.0 & 2.0 NDA 2024<p>SSB GUIDE</p></summary>
+            <summary><p>{file_name}</p></summary>
             <table>
                 {link_rows}
             </table>
             <h3>THANK YOU</h3>
-            <h4>Contact with us in <a href='http://telegram.me/allaimers_bot'>
+            <h4>Contact with us in <a href='http://telegram.me/itz_AJPYTHON_BOT'>
                 <br/>
-                AIMERS OFFICIAL BOT</a>
+                ΛJ OFFICIAL BOT</a>
                 <br/>
                 in TELEGRAM.</h4>
         </details>
         <div class='footer'>
             <div class='footer-text'>
-                Developed By: ＡＪ_ＰＹＴＨＯＮ
+                Developed By: ＡＪ_ＰＹＴＨＯＮ ㊝
             </div>
         </div>
     </body>

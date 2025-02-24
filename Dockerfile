@@ -11,7 +11,4 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 # Run the bot
-CMD ["python", "bot.py"]
-
-# port specify
-Expose 8080
+CMD gunicorn app:app & python3 bot.py

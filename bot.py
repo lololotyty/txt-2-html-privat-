@@ -2,8 +2,8 @@ import telebot
 import os
 import re
 
-API_ID = os.getenv("API_ID", "ac24e438ff9a0f600cf3283e6d60b1aa")
-API_HASH = os.getenv("API_HASH", "25579552")
+API_ID = os.getenv("API_ID", "25579552")
+API_HASH = os.getenv("API_HASH", "ac24e438ff9a0f600cf3283e6d60b1aa")
 TOKEN = os.getenv("BOT_TOKEN", "7460000876:AAE7rQrw0QC-Af_t8Iqs7im8xDcZNxfom3A")
 
 bot = telebot.TeleBot(TOKEN)

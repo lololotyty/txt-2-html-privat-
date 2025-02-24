@@ -4,7 +4,7 @@ import re
 
 API_ID = os.getenv("API_ID", "ac24e438ff9a0f600cf3283e6d60b1aa")
 API_HASH = os.getenv("API_HASH", "25579552")
-TOKEN = os.getenv("BOT_TOKEN", "7548242755:AAGiLXS6Qc2ZCPksD73t7yVlPKeFi4w86gM")
+TOKEN = os.getenv("BOT_TOKEN", "7460000876:AAE7rQrw0QC-Af_t8Iqs7im8xDcZNxfom3A")
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -56,38 +56,38 @@ def txt_to_html(txt_path, html_path):
     </head>
     <body>
         <div class='header'>
-            <a href='https://t.me/AJ_STYLE_EDITS' target='_blank'>
+            <a href='https://t.me/save_restricted_botss' target='_blank'>
                 <img src='https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg' alt='Telegram Channel'>
                 Telegram Channel
             </a>
-            <a href='https://telegram.me/AJ_TECH_WORLD' target='_blank'>
+            <a href='https://t.me/defencecornor' target='_blank'>
                 <img src='https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg' alt='Telegram Main Channel'>
                 Telegram Main
             </a>
-            <a href='https://t.me/AJ_PYTHON_15' target='_blank'>
+            <a href='https://telegram.dog/TalkwithSupport_bot' target='_blank'>
                 <img src='https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg' alt='Telegram Username'>
                 Telegram Username
             </a>
         </div>
         <pre>
-            <img src='https://envs.sh/tdy.jpg' height='150'/>
+            <img src='https://i.ibb.co/23h0XKRF/max.jpg' height='150'/>
         </pre>
-        <h1>ΛJ 𝐓𝐄𝐂𝐇 𝐖𝐎𝐑𝐋𝐃</h1>
+        <h1>krēˈādər</h1>
         <details>
             <summary><p>{file_name}</p></summary>
             <table>
                 {link_rows}
             </table>
             <h3>THANK YOU</h3>
-            <h4>Contact with us in <a href='http://telegram.me/itz_AJPYTHON_BOT'>
+            <h4>Contact with us in <a href='https://telegram.dog/TalkwithSupport_bot'>
                 <br/>
-                ΛJ OFFICIAL BOT</a>
+                krēˈādər</a>
                 <br/>
                 in TELEGRAM.</h4>
         </details>
         <div class='footer'>
             <div class='footer-text'>
-                Developed By: ＡＪ_ＰＹＴＨＯＮ ㊝
+                Developed By: krēˈādər
             </div>
         </div>
     </body>
